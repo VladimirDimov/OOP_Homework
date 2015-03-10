@@ -42,9 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Batery.cs" />
+    <Compile Include="Call.cs" />
     <Compile Include="Display.cs" />
     <Compile Include="GSM.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="GSMTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

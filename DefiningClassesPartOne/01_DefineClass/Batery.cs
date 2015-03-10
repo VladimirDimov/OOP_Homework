@@ -11,9 +11,14 @@ namespace DefiningClassesPartOne
         private string modelOfBatery;
         private double hoursIdleOfBatery;
         private double hoursTalkOfBatery;
+        private Type bateryType = Type.Undefined;
 
-        public Batery()
+        public enum Type
         { 
+            LiIon, 
+            NiMH, 
+            NiCd,
+            Undefined
         }
 
         public Batery(string model)
@@ -32,23 +37,52 @@ namespace DefiningClassesPartOne
         {
             this.hoursTalkOfBatery = hoursTalk;
         }
-        
+
+        public Batery(string model, int hoursIdl, int hoursTalk, Type type)
+            : this(model, hoursIdl, hoursTalk)
+        {
+            this.bateryType = type;
+        }
+
         public string Model
         {
             get { return this.modelOfBatery; }
-            set { this.modelOfBatery = value; }
+            set 
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Batery model cannot be null or empty.");
+                }
+                this.modelOfBatery = value; 
+            }
         }
 
         public double HoursIdle
         {
             get {return this.hoursIdleOfBatery; }
-            set { this.hoursIdleOfBatery = value;}
+            set 
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("Hours idle must be bigger than zero.");
+                }
+                this.hoursIdleOfBatery = value;
+            }
         }
 
         public double HoursTalk
         {
             get { return this.hoursTalkOfBatery; }
-            set { this.hoursTalkOfBatery = value; }
+            set 
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("Hours talk must be bigger than zero.");
+                }
+                this.hoursTalkOfBatery = value; 
+            }
         }
+
+        public Type BateryType { get; set; }
     }
 }
