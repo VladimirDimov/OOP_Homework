@@ -24,7 +24,11 @@ namespace DefiningClassesPartOne
 
             GSM iphone4S = GSM.IPhone4S;
             Console.WriteLine(iphone4S.ToString());
+            iphone4S.AddCall(DateTime.Today, "0877286039", 250);
+            Console.WriteLine(iphone4S.GetTotalCallPrice());
 
+            GSMCallHistoryTest.TestCallHistory();
         }
+
     }
 }

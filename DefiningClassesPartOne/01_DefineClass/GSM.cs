@@ -8,12 +8,15 @@ namespace DefiningClassesPartOne
 {
     public class GSM
     {
+        private const decimal Call_Price_Per_Minute = 0.37M;
+
         private string modelOfGSM;
         private string manufacturerOfGSM;
         private decimal priceOfGSM ;
         private string ownerOfGSM;
         private Batery bateryOfGSM;
         private Display displayOfGSM;
+        private List<Call> callHistory = new List<Call>();
 
         public GSM(string model, string manufacturer)
         {
@@ -141,6 +144,39 @@ namespace DefiningClassesPartOne
                     new Batery("Li-Po 1432 mAh", 200, 14, Batery.Type.LiIon),
                     new Display(640, 960, 16000000));
             }
+        }
+
+        public List<Call> CallHistory
+        {
+            get { return callHistory; }
+        }
+
+
+        public void AddCall(DateTime dateTime, string diledNumber, double duration)
+        {
+            this.callHistory.Add(new Call(dateTime, diledNumber, duration));
+        }
+
+        public void DeleteCall(int startIndex, int endIndex)
+        {
+            if (startIndex >= 0 && startIndex < callHistory.Count)
+            {
+                callHistory.RemoveRange(startIndex, endIndex);
+            }
+            else
+            {
+                throw new IndexOutOfRangeException("Invalid call index");
+            }
+        }
+
+        public decimal GetTotalCallPrice()
+        {
+            decimal totalPrice = 0;
+            foreach (var call in this.callHistory)
+            {
+                totalPrice += (decimal)Math.Ceiling(call.Duration / 60) * Call_Price_Per_Minute;
+            }
+            return totalPrice;
         }
     }
 }
