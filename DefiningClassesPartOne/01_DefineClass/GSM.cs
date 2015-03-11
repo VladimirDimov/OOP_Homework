@@ -17,30 +17,35 @@ namespace DefiningClassesPartOne
         private Batery bateryOfGSM;
         private Display displayOfGSM;
         private List<Call> callHistory = new List<Call>();
-
+        
         public GSM(string model, string manufacturer)
         {
             this.modelOfGSM = model;
             this.manufacturerOfGSM = manufacturer;
+            //default values
+            this.Price = 0;
+            this.Owner = "Not defined";
+            this.Batery = new Batery();
+            this.Display = new Display();
         }
 
         public GSM(string model, string manufacturer, decimal price)
             : this(model, manufacturer)
         {
-            this.priceOfGSM = price;
+            this.Price = price;
         }
 
         public GSM(string model, string manufacturer, decimal price, string owner)
             : this( model,  manufacturer,  price)
         {
-            this.ownerOfGSM = owner;
+            this.Owner = owner;
         }
 
         public GSM(string model, string manufacturer, decimal price, string owner, Batery batery, Display display)
             : this(model, manufacturer, price, owner)
         {
-            this.bateryOfGSM = batery;
-            this.displayOfGSM = display;
+            this.Batery = batery;
+            this.Display = display;
         }
 
         public string Model
@@ -101,7 +106,7 @@ namespace DefiningClassesPartOne
             set { this.bateryOfGSM = value; } //data is validated in Batery.cs
         }
 
-        public Display DisplayProperties
+        public Display Display
         {
             get { return this.displayOfGSM; }
             set { this.displayOfGSM = value; } //data is validated in Display.cs        
@@ -177,6 +182,19 @@ namespace DefiningClassesPartOne
                 totalPrice += (decimal)Math.Ceiling(call.Duration / 60) * Call_Price_Per_Minute;
             }
             return totalPrice;
+        }
+
+        public void ClearCallHistory()
+        {
+            this.callHistory.Clear();
+        }
+
+        public void PrintCalls()
+        {
+            foreach (var call in this.CallHistory)
+            {
+                Console.WriteLine("Date: {0}, Time: {1}, Duration: {2} sec", call.Date, call.Time, call.Duration);
+            }
         }
     }
 }

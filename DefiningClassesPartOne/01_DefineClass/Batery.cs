@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DefiningClassesPartOne
 {
-    public class Batery
+     public class Batery
     {
-        private string modelOfBatery;
+        private string modelOfBatery = "Unknown";
         private double hoursIdleOfBatery;
         private double hoursTalkOfBatery;
-        private Type bateryType = Type.Undefined;
+        private Type bateryType;
 
         public enum Type
         { 
@@ -21,27 +21,35 @@ namespace DefiningClassesPartOne
             Undefined
         }
 
+        public Batery()
+        {
+            this.Model = "Undefined Model";
+            this.HoursIdle = 48;
+            this.HoursTalk = 14;
+            this.BateryType = Type.Undefined;
+        }
+
         public Batery(string model)
         {
-            this.modelOfBatery = model;
+            this.Model = model;
         }
 
         public Batery(string model, int hoursIdl)
             : this(model)
         {
-            this.hoursIdleOfBatery = hoursIdl;
+            this.HoursIdle = hoursIdl;
         }
 
         public Batery(string model, int hoursIdl, int hoursTalk)
             : this(model, hoursIdl)
         {
-            this.hoursTalkOfBatery = hoursTalk;
+            this.HoursTalk = hoursTalk;
         }
 
         public Batery(string model, int hoursIdl, int hoursTalk, Type type)
             : this(model, hoursIdl, hoursTalk)
         {
-            this.bateryType = type;
+            this.BateryType = type;
         }
 
         public string Model
@@ -53,7 +61,7 @@ namespace DefiningClassesPartOne
                 {
                     throw new ArgumentException("Batery model cannot be null or empty.");
                 }
-                this.modelOfBatery = value; 
+                this.modelOfBatery = value;
             }
         }
 
@@ -83,6 +91,10 @@ namespace DefiningClassesPartOne
             }
         }
 
-        public Type BateryType { get; set; }
+        public Type BateryType 
+        {
+            get { return this.bateryType; }
+            set { this.bateryType = value; }
+        }
     }
 }

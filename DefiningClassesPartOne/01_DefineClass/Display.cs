@@ -11,30 +11,37 @@ namespace DefiningClassesPartOne
         private int displayWidth;
         private int displayHeight;
         private int numberOfColors;
-        
+
+        public Display()
+        {
+            this.Width = 320;
+            this.Height = 240;
+            this.NumberOfColors = 65000;
+        }
+
         public Display(int width, int height, int colors)
         {
-            this.displayWidth = width;
-            this.displayHeight = height;
-            this.numberOfColors = colors;
-    }
+            this.Width = width;
+            this.Height = height;
+            this.NumberOfColors = colors;
+        }
         public int Width
         {
             get { return this.displayWidth; }
-            set 
+            set
             {
                 if (value <= 0)
                 {
                     throw new ArgumentException("Display size cannot be null or empty.");
                 }
-                this.displayWidth = value; 
+                this.displayWidth = value;
             }
         }
 
         public int Height
         {
             get { return this.displayHeight; }
-            set 
+            set
             {
                 if (value <= 0)
                 {
@@ -47,15 +54,15 @@ namespace DefiningClassesPartOne
         public int NumberOfColors
         {
             get { return this.numberOfColors; }
-            set 
+            set
             {
-                if (numberOfColors <= 0)
+                if (value <= 0)
                 {
                     throw new ArgumentException("Display colors number must be greater than zero.");
                 }
-                this.numberOfColors = value; 
+                this.numberOfColors = value;
             }
         }
-        
+
     }
 }

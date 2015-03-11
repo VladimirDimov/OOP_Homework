@@ -2,21 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
+using System.Globalization;
 
 namespace DefiningClassesPartOne
 {
-    public class Call
+    public class Call : IComparable<Call>
     {
         private DateTime dateTime;
         private string dialedNumber;
         private double duration; // in seconds
 
+        public int CompareTo(Call otherCall)
+        {
+            return this.duration.CompareTo(otherCall.duration);
+        }
+
         public Call(DateTime datetime, string diledNumber, double duration)
         {
-            this.dateTime = datetime;
-            this.dialedNumber = diledNumber;
-            this.duration = duration;
+            this.DateTime = datetime;
+            this.DialedNumber = diledNumber;
+            this.Duration = duration;
         }
 
         public double Duration
@@ -36,7 +42,13 @@ namespace DefiningClassesPartOne
                 }
                 this.dialedNumber = value; 
             }
-        }        
+        }
+
+        public DateTime DateTime
+        {            
+            get { return this.dateTime; }
+            set { this.dateTime = value; }
+        }
 
         public string Time
         {
