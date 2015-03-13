@@ -43,6 +43,15 @@ namespace DefiningClassesPartTwo
 
             //test file writing
             PathStorage.SavePath(newPath, @"..\..\newPath.txt");
+
+            //test file loading
+            Console.WriteLine();
+            Path pathFromFile = new Path();
+            PathStorage.LoadPath(pathFromFile, @"..\..\newPath.txt");
+            Console.WriteLine("Printing loaded path");
+            Console.WriteLine(pathFromFile.ToString());
+
+            Console.ReadLine();
         }
     }
 }

@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Point", "Point\Point.csproj", "{C95DE085-51AF-4DAA-945F-F1A356F9E9D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericClass", "GenericClass\GenericClass.csproj", "{411ABBEC-7838-4E88-B896-F13C537FB3BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +17,10 @@ Global
 		{C95DE085-51AF-4DAA-945F-F1A356F9E9D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C95DE085-51AF-4DAA-945F-F1A356F9E9D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C95DE085-51AF-4DAA-945F-F1A356F9E9D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{411ABBEC-7838-4E88-B896-F13C537FB3BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{411ABBEC-7838-4E88-B896-F13C537FB3BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{411ABBEC-7838-4E88-B896-F13C537FB3BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{411ABBEC-7838-4E88-B896-F13C537FB3BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
