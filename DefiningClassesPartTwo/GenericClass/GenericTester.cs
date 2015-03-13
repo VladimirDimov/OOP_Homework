@@ -24,7 +24,23 @@ namespace GenericClass
             testList.Add(100);
             Console.WriteLine(testList.IndexOf(7));
             Console.WriteLine(testList.ToString());
+
+            Console.WriteLine("Returning Min value ...");
+            Console.WriteLine(testList.Min<int>());
             testList.Clear();
+
+            //Testing string genericList
+            Console.WriteLine();
+            Console.WriteLine("Testing <string> generic list ...");
+            GenericList<string> testString = new GenericList<string>();
+            testString.Add("abc");
+            testString.Add("def");
+            testString.Add("ghi");
+            Console.WriteLine("Returning Min value ...");
+            Console.WriteLine(testString.Min<string>());
+            Console.WriteLine("Returning Max value ...");
+            Console.WriteLine(testString.Max<string>());
+
             Console.ReadLine();
         }
 

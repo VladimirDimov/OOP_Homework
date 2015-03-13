@@ -124,5 +124,33 @@
             }
             return builder.ToString();
         }
+
+        public T Min<T>()
+            where T: IComparable
+        {
+            T minValue = (dynamic)this.array[0];
+            for (int i = 0; i < rightIndex; i++)
+            {
+                if (minValue.CompareTo(this.array[i]) > 0)
+                {
+                    minValue = (dynamic)this.array[i];
+                }
+            }
+            return minValue;
+        }
+
+        public T Max<T>()
+           where T : IComparable
+        {
+            T minValue = (dynamic)this.array[0];
+            for (int i = 0; i < rightIndex; i++)
+            {
+                if (minValue.CompareTo(this.array[i]) < 0)
+                {
+                    minValue = (dynamic)this.array[i];
+                }
+            }
+            return minValue;
+        }
     }
 }
