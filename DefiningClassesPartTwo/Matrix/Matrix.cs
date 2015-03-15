@@ -94,19 +94,54 @@ namespace Matrix
         }
 
         public static Matrix<T> operator *(Matrix<T> a, Matrix<T> b)
-        {
-            if (a.Rows != b.Rows || a.Cols != b.Cols)
+        {          
+            if (a.Cols != b.Rows)
             {
-                throw new ArithmeticException("The two matrixes must be with same sizes");
+                throw new ArithmeticException("The first matrix columns must equal the second matrix rows");
             }
 
-            Matrix<T> newMatrix = new Matrix<T>(a.Rows, a.Cols);
-            //TODO
+            Matrix<T> newMatrix = new Matrix<T>(a.Rows, b.Cols);
+
+            for (int row = 0; row < a.Rows; row++)
+            {
+                for (int col = 0; col < b.Cols; col++)
+                {
+                    T curCellValue = (dynamic)0;
+                    for (int i = 0; i < a.Cols; i++)
+                    {
+                        curCellValue += ((dynamic)a[row, i] * (dynamic)b[i, col]);
+                    }
+                    newMatrix[row, col] = curCellValue;
+                }
+            }
             return newMatrix;
         }
 
+        public static bool operator true(Matrix<T> matrix)
+        {
+            return IsNonZero(matrix);
+        }
 
-        public void PrintMatrix(int padRight)
+        public static bool operator false(Matrix<T> matrix)
+        {
+            return !IsNonZero(matrix);
+        }
+
+        private static bool IsNonZero(Matrix<T> matrix)
+        {
+            for (int row = 0; row < matrix.Rows; row++)
+            {
+                for (int col = 0; col < matrix.Cols; col++)
+                {
+                    if (matrix[row, col] != (dynamic)0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        public string GetValues(int padRight)
         {
             var builder = new StringBuilder();
             for (int row = 0; row < this.Rows; row++)
@@ -118,7 +153,7 @@ namespace Matrix
                 }
                 builder.AppendLine();
             }
-            Console.Write(builder.ToString());
+            return builder.ToString();
         }
     }
 }
