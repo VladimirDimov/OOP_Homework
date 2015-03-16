@@ -13,7 +13,7 @@
 
     public static class Extensions
     {
-        public static string SubString(this StringBuilder builder, int index, int length)
+        public static StringBuilder SubString(this StringBuilder builder, int index, int length)
         {
             if (index < 0 || index >= builder.Length || index + length >= builder.Length)
             {
@@ -24,7 +24,7 @@
             {
                 substring.Append(builder.ToString()[i]);
             }
-            return substring.ToString();
+            return substring;
         }
     }
 }

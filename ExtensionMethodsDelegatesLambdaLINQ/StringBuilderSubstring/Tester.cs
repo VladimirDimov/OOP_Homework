@@ -9,7 +9,7 @@ namespace StringBuilderSubstring
         {
             var builder = new StringBuilder();
             builder.Append("123456789");
-            Console.WriteLine(builder.SubString(1, 3));  //Print: 234
+            Console.WriteLine(builder.SubString(1, 3).ToString());  //Print: 234
         }
     }
 }
