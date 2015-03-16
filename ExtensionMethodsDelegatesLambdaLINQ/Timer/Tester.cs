@@ -8,13 +8,15 @@ namespace Timer
         static void Main()
         {
             //Print current time milliseconds with 2 seconds delay
-            Timer timer = new Timer(new deleg(GetCurrentTimeMilliseconds));
-            timer.DoPeriodically(2);           
+            Timer timer = new Timer();
+            timer.TimeIntervaInSeconds = 1;
+            timer.Method = SayHi;
+            timer.Execute();
         }
 
-        static void GetCurrentTimeMilliseconds()
+        static void SayHi()
         {
-            Console.WriteLine(DateTime.Now.Millisecond);
+            Console.WriteLine("Hi!");
         }
 
     }

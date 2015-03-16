@@ -19,7 +19,6 @@ namespace DivisibleBy7and3
             // Solve using predicate
             Console.WriteLine("Using predicate:");
             var devisibleByThreeAndSeven = numbers.Where(x => DevisibleBy(x, 3, 7));
-
             foreach (var number in devisibleByThreeAndSeven)
             {
                 Console.WriteLine(number);

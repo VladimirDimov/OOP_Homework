@@ -3,24 +3,28 @@
     using System;
     using System.Threading;
 
-    public delegate void deleg();
 
     public class Timer
     {
-        private deleg method;
+        public delegate void InputMethod();
+        private int timeIntervaInSeconds;
 
-        public Timer(deleg a)
+        public InputMethod Method { get; set; }
+
+        public int TimeIntervaInSeconds
         {
-            method = a;
+            get { return this.timeIntervaInSeconds; }
+            set { this.timeIntervaInSeconds = value; }
         }
 
-        public void DoPeriodically(int delay)
+        public void Execute()
         {
             while (true)
             {
-                method();
-                Thread.Sleep(delay*1000);
+                this.Method();
+                Thread.Sleep(this.TimeIntervaInSeconds*1000);
             }
         }
+
     }
 }
