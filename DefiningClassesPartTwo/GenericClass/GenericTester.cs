@@ -1,12 +1,10 @@
-﻿
-namespace GenericClass
+﻿namespace GenericClass
 {
     using System;
-    //using GenericClass;
 
-    class GenericTester
+    public class GenericTester
     {
-        static void Main()
+        public static void Main()
         {
             GenericList<int> testList = new GenericList<int>();
             for (int i = 0; i < 8; i++)
@@ -14,12 +12,13 @@ namespace GenericClass
                 testList.Add(i);
             }
 
-            //testList.RemoveAt(1);
-            //testList.Add(9);
+            // testList.RemoveAt(1);
+            // testList.Add(9);
             for (int i = 0; i < 3; i++)
             {
                 testList.RemoveAt(i);
             }
+
             testList.InsertAt(1, 200);
             testList.Add(100);
             Console.WriteLine(testList.IndexOf(7));
@@ -29,7 +28,7 @@ namespace GenericClass
             Console.WriteLine(testList.Min<int>());
             testList.Clear();
 
-            //Testing string genericList
+            // Testing string genericList
             Console.WriteLine();
             Console.WriteLine("Testing <string> generic list ...");
             GenericList<string> testString = new GenericList<string>();
@@ -43,6 +42,5 @@ namespace GenericClass
 
             Console.ReadLine();
         }
-
     }
 }

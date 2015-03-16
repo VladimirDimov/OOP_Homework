@@ -1,11 +1,21 @@
-﻿
-namespace SchoolClasses
+﻿namespace SchoolClasses
 {
     using System;
 
     public class Student : Human
     {
         private uint classNumber;
+
+        public Student(string firstName, string lastName) : base(firstName, lastName)
+        {
+            this.ClassNumber = 0;
+        }
+
+        public Student(string firstName, string lastName, uint classNumber)
+            : this(firstName, lastName)
+        {
+            this.ClassNumber = classNumber;
+        }
 
         public uint ClassNumber
         {
@@ -16,13 +26,18 @@ namespace SchoolClasses
 
             set
             {
-                if (value <= 0)
+                if (value < 0)
                 {
-                    throw new ArgumentException("Class number must be bigger than zero");
+                    throw new ArgumentException("Invalid class number");
                 }
 
                 this.classNumber = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return this.FirstName + " " + this.LastName + " " + "Number: " + this.ClassNumber;
         }
     }
 }

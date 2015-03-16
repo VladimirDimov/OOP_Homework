@@ -90,9 +90,8 @@
         public override string ToString()
         {
             var builder = new StringBuilder();
-            builder.AppendFormat("{0}, Lectures: {1}, Exercises: {2}", Name, NumberOfLectures, NumberOfExercises);
+            builder.AppendFormat("{0}, Lectures: {1}, Exercises: {2}", this.Name, this.NumberOfLectures, this.NumberOfExercises);
             return builder.ToString();
         }
-
     }
 }

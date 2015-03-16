@@ -3,13 +3,13 @@
     using System;
     using System.Collections.Generic;
 
-    class Class
+    public class Class
     {
         private string textID;
         private List<Student> students;
         private List<Teacher> teachers;
 
-        //Constructors
+        // Constructors
         public Class(string id)
         {
             this.TextID = id;
@@ -18,18 +18,18 @@
         }
 
         public Class(string id, List<Student> students)
-            :this(id)
+            : this(id)
         {
             this.Students = students;
         }
 
         public Class(string id, List<Student> students, List<Teacher> teachers)
-            :this(id, students)
+            : this(id, students)
         {
             this.Teachers = teachers;
         }
 
-        //Properties
+        // Properties
         public string TextID
         {
             get
@@ -58,6 +58,11 @@
         {
             get { return this.teachers; }
             set { this.teachers = value; }
+        }
+
+        public override string ToString()
+        {
+            return this.TextID;
         }
     }
 }
