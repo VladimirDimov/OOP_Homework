@@ -47,23 +47,6 @@
         {
             var sellection = collection.FindAll(x => x.GroupNumber == 2).OrderBy(x => x.FirstName).ToList<Student>();
             return sellection;
-        }
-
-        public static Dictionary<int, List<Student>> ByGroup(this List<Student> collection)
-        {
-            var studentsByGroup = new Dictionary<int, List<Student>>();
-            foreach (var student in collection)
-            {
-                if (studentsByGroup.ContainsKey(student.GroupNumber))
-                {
-                    studentsByGroup[student.GroupNumber].Add(student);
-                }
-                else
-                {
-                    studentsByGroup.Add(student.GroupNumber, new List<Student>(){student});
-                }
-            }
-            return studentsByGroup;
-        }
+        }       
     }
 }

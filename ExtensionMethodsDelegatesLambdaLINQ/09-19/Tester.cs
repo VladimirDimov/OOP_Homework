@@ -140,8 +140,12 @@
             // Use LINQ.
             Console.WriteLine();
             Console.WriteLine("Order by group number (using LINQ):");
-            var orderByGroup = allStudents.GroupBy(x => x.GroupNumber);
-            foreach (var group in orderByGroup)
+            var groups =
+                 from student in allStudents
+                 group student by student.GroupNumber into newGroup
+                 select newGroup;
+
+            foreach (var group in groups)
             {
                 Console.WriteLine("Group {0}", group.Key);
                 foreach (var student in group)
@@ -155,11 +159,11 @@
             // Rewrite the previous using extension methods.
             Console.WriteLine();
             Console.WriteLine("Order by group number (using extension methods):");
-            var groupByGroupNumber = allStudents.ByGroup();  // ByGroup extension method is declared in Students.cs
-            foreach (var group in groupByGroupNumber.Keys)
+            var groupByGroupNumber = allStudents.GroupBy(x => x.GroupNumber); // ByGroup extension method is declared in Students.cs
+            foreach (var group in groupByGroupNumber)
             {
-                Console.WriteLine("Group " + group);
-                foreach (var student in groupByGroupNumber[group])
+                Console.WriteLine("Group " + group.Key);
+                foreach (var student in group)
                 {
                     Console.WriteLine(student.FirstName + " " + student.LastName);
                 }
