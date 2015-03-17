@@ -19,6 +19,12 @@
             allStudents.Add(new Student("Pencho", "Georgiev", 100615, "02/77956284", "pencho@mail.bg", new List<int>() { 6, 5 }, 2));
             allStudents.Add(new Student("Georgi", "Penev", 101006, "02/77427553", "joro@abv.bg", new List<int>() { 4, 6 }, 2));
 
+            // Create a list of gropus
+            List<Group> allGroups = new List<Group>();
+            allGroups.Add(new Group(1, "Literature"));
+            allGroups.Add(new Group(2, "Mathematics"));
+
+            // Print all students
             Console.WriteLine("All students:");
             foreach (var student in allStudents)
             {
@@ -92,6 +98,7 @@
                     FullName = string.Format("{0} {1}", student.FirstName, student.LastName),
                     Marks = string.Join(", ", student.Marks)
                 };
+
                 Console.WriteLine(extractedStudent.ToString());
             }
 
@@ -123,13 +130,35 @@
                     marks2006.Add(mark);
                 }
             }
-
+            
             Console.WriteLine(string.Join(", ", marks2006));
+
+            // Problem 16.* Groups
+            // ===================
+            // Create a class Group with properties GroupNumber and DepartmentName.
+            // Introduce a property GroupNumber in the Student class.
+            // Extract all students from "Mathematics" department.
+            // Use the Join operator.
+            // Info: https://www.youtube.com/watch?v=Te2o5qakvZk
+            Console.WriteLine();
+            Console.WriteLine("Show athematics department:");
+            var mathStudents = allStudents.Join(allGroups.FindAll(x => x.DepartmentName == "Mathematics"), s => s.GroupNumber, g => g.GroupNumber,
+                (student, department) => new
+                {
+                    StudentName = student.FirstName + student.LastName,
+                    DepartmentName = department.DepartmentName
+                });
+
+            foreach (var student in mathStudents)
+            {
+                Console.WriteLine("{0, -15} {1}", student.StudentName, student.DepartmentName);
+            }
 
             // Problem 17. Longest string
             // ==========================
             // Write a program to return the string with maximum length from an array of strings.
             // Use LINQ.
+            Console.WriteLine();
             Console.WriteLine("Longest student firs name");
             var longestFirstName = allStudents.Select(x => x.FirstName).ToArray().OrderByDescending(x => x.Length).First();
             Console.WriteLine(longestFirstName);

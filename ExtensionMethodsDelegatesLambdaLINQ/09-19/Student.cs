@@ -17,8 +17,7 @@
             this.Marks = marks;
             this.GroupNumber = groupNumber;
         }
-        
-        
+
         public string FirstName { get; set; }
         
         public string LastName { get; set; }
