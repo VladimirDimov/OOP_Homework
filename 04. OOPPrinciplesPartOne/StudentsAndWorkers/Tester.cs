@@ -46,6 +46,43 @@ namespace StudentsAndWorkers
                 Console.WriteLine(student.ToString());
             }
 
+            // Initializing a list of 10 workers
+            Console.WriteLine();
+            Console.WriteLine("Sorted workers by payment per hour:");
+            var workers = new List<Worker>();
+            workers.Add(new Worker("Gosho", "Tonev", 8, 7));
+            workers.Add(new Worker("Toncho", "Goshev", 8, 5));
+            workers.Add(new Worker("Mincho", "Penev", 8, 6));
+            workers.Add(new Worker("Pencho", "Minev", 8, 4));
+            workers.Add(new Worker("Boncho", "Genchev", 8, 9));
+            workers.Add(new Worker("Gencho", "Bonev", 8, 10));
+            workers.Add(new Worker("Muncho", "Monev", 8, 12));
+            workers.Add(new Worker("Pesho", "Gochev", 8, 3));
+            workers.Add(new Worker("Gocho", "Peshev", 8, 11));
+            workers.Add(new Worker("Kevork", "Kevorkian", 8, 8));
+
+            // sort workers by payment
+            var sortedByPayment = workers.OrderByDescending(x => x.MoneyPerHour);
+            foreach (var worker in sortedByPayment)
+            {
+                Console.WriteLine(worker.ToString());
+            }
+
+            // Merge students and workers
+            var studentsAndWorkers =
+                from student in students
+                join worker in workers
+                on student.FirstName equals worker.FirstName                
+                select new
+                {
+                    FirstName = student.FirstName,
+                    LastName = student.LastName
+                };
+
+            foreach (var person in studentsAndWorkers)
+            {
+                Console.WriteLine(person.FirstName + " " + person.LastName);
+            }
         }
     }
 }

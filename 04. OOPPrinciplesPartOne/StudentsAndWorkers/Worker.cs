@@ -19,13 +19,13 @@
             this.MoneyPerHour = DefaultMoneyPerHour;
         }
 
-        public Worker(string firstName, string lastName, int workHoursPerDay, int monryPerHour)
+        public Worker(string firstName, string lastName, int workHoursPerDay, int money)
             : this(firstName, lastName)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
             this.WorkHoursPerDay = workHoursPerDay;
-            this.MoneyPerHour = moneyPerHour;
+            this.MoneyPerHour = money;
         }
 
         public int MoneyPerHour
@@ -80,6 +80,11 @@
 
                 this.weekSalary = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0,-20} Money/Hour: {1}", this.FirstName + " " + this.LastName, this.MoneyPerHour);
         }
     }
 }
