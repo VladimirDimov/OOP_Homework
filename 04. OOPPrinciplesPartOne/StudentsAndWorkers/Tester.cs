@@ -69,15 +69,10 @@ namespace StudentsAndWorkers
             }
 
             // Merge students and workers
+            Console.WriteLine();
+            Console.WriteLine("Merge students and workers and sort them by first and last name ...");
             var studentsAndWorkers =
-                from student in students
-                join worker in workers
-                on student.FirstName equals worker.FirstName                
-                select new
-                {
-                    FirstName = student.FirstName,
-                    LastName = student.LastName
-                };
+                students.Select(s => (Human)s).Concat(workers.Select(w => (Human)w)).OrderBy(x => x.FirstName).ThenBy(x => x.LastName);
 
             foreach (var person in studentsAndWorkers)
             {
