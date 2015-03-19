@@ -63,5 +63,14 @@ namespace _02.BankAccounts
                 this.lastName = value;
             }
         }
+
+        // overrides
+        public override string ToString()
+        {
+            var builder = new StringBuilder();
+            builder.AppendLine(this.GetType().Name);
+            builder.AppendFormat("Name: {0} {1}", this.FirstName, this.LastName);
+            return builder.ToString();
+        }
     }
 }

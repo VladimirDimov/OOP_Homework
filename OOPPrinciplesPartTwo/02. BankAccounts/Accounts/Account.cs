@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿namespace _02.BankAccounts
+{
+using System;
 using System.Text;
 
-namespace _02.BankAccounts
-{
     public abstract class Account
     {
         private const decimal DefaultInterestRate = 0.5m;
@@ -53,5 +51,17 @@ namespace _02.BankAccounts
 
         // abstract methods
         public abstract decimal InterestAmount(int numberOfMonths);
+
+        // overrides
+        public override string ToString()
+        {
+            var builder = new StringBuilder();
+            builder.AppendFormat("{0} -> {1}", this.GetType().Name, this.Customer.GetType().Name);
+            builder.AppendLine();
+            builder.AppendFormat("Balance = {0} lv.", this.Balance);
+            builder.AppendLine();
+            builder.AppendFormat("Interest rate = {0}", this.interestRate);
+            return builder.ToString();
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿namespace _02.BankAccounts
 {
     using System;
+    using System.Text;
 
     public class CompanyCustomer : Customer
     {
@@ -30,6 +31,15 @@
 
                 this.companyName = value;
             }
+        }
+
+        // Overrides
+        public override string ToString()
+        {
+            var builder = new StringBuilder();
+            builder.AppendLine(this.GetType().Name);
+            builder.AppendFormat("Company name: {0}", this.CompanyName);
+            return builder.ToString();
         }
     }
 }

@@ -31,7 +31,7 @@
                 }
                 else
                 {
-                    return (numberOfMonths - 3) * this.InterestRate;
+                    return this.Balance * (numberOfMonths - 3) * this.InterestRate;
                 }
             }
             else if (this.Customer is CompanyCustomer)
@@ -42,7 +42,7 @@
                 }
                 else
                 {
-                    return (numberOfMonths - 2) * this.InterestRate;
+                    return this.Balance * (numberOfMonths - 2) * this.InterestRate;
                 }
             }
 

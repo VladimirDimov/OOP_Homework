@@ -30,7 +30,7 @@ namespace _02.BankAccounts
             }
             else
             {
-                return numberOfMonths * InterestRate;
+                return this.Balance * numberOfMonths * InterestRate;
             }
         }
 
@@ -57,5 +57,12 @@ namespace _02.BankAccounts
 
             this.Balance -= amount;
         }
+
+        // overrides
+        public override string ToString() // definded in base class Account.cs
+        { 
+            return base.ToString();
+        }
+
     }
 }
