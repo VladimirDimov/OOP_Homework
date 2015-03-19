@@ -36,8 +36,8 @@ namespace _01.Shapes
 
             //Testing list of shapes
             Console.WriteLine();
-            Console.WriteLine("Testing list of shapes ...");
-            var shapes = new List<Shape>() { rectangle, triangle, circle };
+            Console.WriteLine("Testing array of shapes ...");
+            var shapes = new Shape[] { rectangle, triangle, circle };
             foreach (var shape in shapes)
             {
                 Console.WriteLine(shape.ToString());
