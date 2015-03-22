@@ -1,4 +1,8 @@
-﻿namespace FirstBeforeLast
+﻿// Problem 3. First before last
+// Problem 4. Age range
+// Problem 5. Order students
+
+namespace FirstBeforeLast
 {
     using System;
     using System.Collections.Generic;
@@ -29,7 +33,10 @@
             // Use LINQ query operators.
             Console.WriteLine();
             Console.WriteLine("Students which first name is before last name alphabetically:");
-            var firstBfLast = FirstBfLast(allStuents);
+            var firstBfLast =
+                from student in allStuents
+                where student.FirstName.CompareTo(student.LastName) < 0
+                select student;
             foreach (var student in firstBfLast)
             {
                 Console.WriteLine(student.ToString());
@@ -68,32 +75,13 @@
             Console.WriteLine("Ordered by first and last name (using LINQ qury)):");
             var sortedByNameByQURY =
                 from student in allStuents
-                orderby  student.FirstName descending, student.LastName descending
+                orderby student.FirstName descending, student.LastName descending
                 select student;
 
             foreach (var student in sortedByNameByQURY)
             {
                 Console.WriteLine(student.ToString());
             }
-        }
-
-        private bool SortAge(Student student)
-        {
-            if (student.Age >= 18 && student.Age <= 24)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        private static List<Student> FirstBfLast(List<Student> students)
-        {
-            var firstBfLast =
-                from student in students
-                where student.FirstName.CompareTo(student.LastName) < 0
-                select student;
-
-            return firstBfLast.ToList<Student>();
         }
     }
 }

@@ -38,14 +38,5 @@
                 this.FirstName, this.LastName, this.FN, this.Tel, this.Email, 
                 string.Join(", ", this.Marks), this.GroupNumber);
         }
-    }
-
-    public static class Extensions
-    { 
-        public static List<Student> SelectGroup(this List<Student> collection, byte group)
-        {
-            var sellection = collection.FindAll(x => x.GroupNumber == 2).OrderBy(x => x.FirstName).ToList<Student>();
-            return sellection;
-        }       
-    }
+    }  
 }

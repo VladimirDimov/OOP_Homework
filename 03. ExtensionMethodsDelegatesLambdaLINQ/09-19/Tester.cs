@@ -53,7 +53,7 @@
             // Implement the previous using the same query expressed with extension methods.
             Console.WriteLine();
             Console.WriteLine("Students from group 2 in order by first name (using extension methods):");
-            List<Student> sellection = allStudents.SelectGroup(2);
+            List<Student> sellection = allStudents.FindAll(x => x.GroupNumber == 2).OrderBy(x => x.FirstName).ToList<Student>();
             foreach (var student in sellection)
             {
                 Console.WriteLine(student.ToString());
