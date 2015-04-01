@@ -13,7 +13,7 @@
             this.LastName = "Undefined";
         }
 
-        public Human(string firstName, string lastName) : this()
+        public Human(string firstName, string lastName)
         {
             this.FirstName = firstName;
             this.LastName = lastName;

@@ -72,7 +72,7 @@ namespace StudentsAndWorkers
             Console.WriteLine();
             Console.WriteLine("Merge students and workers and sort them by first and last name ...");
             var studentsAndWorkers =
-                students.Select(s => (Human)s).Concat(workers.Select(w => (Human)w)).OrderBy(x => x.FirstName).ThenBy(x => x.LastName);
+                students.Concat(workers.Select(w => (Human)w)).OrderBy(x => x.FirstName).ThenBy(x => x.LastName);
 
             foreach (var person in studentsAndWorkers)
             {
