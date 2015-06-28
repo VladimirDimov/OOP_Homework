@@ -6,7 +6,7 @@
     using System.Text;
     using System.Linq;
 
-    class BitArray64 : IEnumerable<int>, IComparable
+    class BitArray64 : IEnumerable<int>
     {
         private ulong number;
 
